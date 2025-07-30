@@ -54,6 +54,7 @@ class LogicPublisher(PublisherUsecase):
             decoder=broker_producer._decoder.custom_func,
             message_format=self.config.message_format,
         )
+        self.producer.serializer = self.config._outer_config.fd_config.serializer
 
     @abstractmethod
     def subscriber_property(self, *, name_only: bool) -> dict[str, Any]:
