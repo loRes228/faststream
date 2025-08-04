@@ -177,6 +177,8 @@ def test_gen_asyncapi_for_kafka_app(
             *commands,
         ) as cli_thread,
     ):
+        cli_thread.wait_for_stderr("Your project AsyncAPI scheme")
+
         assert cli_thread.process
 
         schema_path = app_path.parent / "schema.json"
