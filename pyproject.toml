@@ -214,6 +214,14 @@ source = ["docs/docs_src", "examples", "faststream", "tests"]
 plugins = ["covdefaults"]
 omit = ["**/__init__.py", "tests/mypy/*"]
 
+[tool.coverage.paths]
+source = [
+    ".",
+    "/home/runner/work/faststream/faststream/",
+    "/Users/runner/work/faststream/faststream/",
+    "D:\\a\\faststream\\faststream\\",
+]
+
 [tool.coverage.report]
 show_missing = true
 skip_empty = true
