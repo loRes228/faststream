@@ -53,7 +53,7 @@ jobs:
         run: uv pip install --system --prerelease=disallow "pydantic>=2.0.0,<3.0.0"
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and not connected) or not connected"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.${{ runner.os }}-py${{ matrix.python-version }}-${{ matrix.pydantic-version }}
@@ -83,7 +83,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and not connected) or not connected"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.macos-latest
@@ -113,7 +113,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and not connected) or not connected"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.windows-latest
@@ -183,7 +183,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and kafka and connected) or (kafka and connected)"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.kafka-py
@@ -253,7 +253,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and confluent and connected) or (confluent and connected)"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.confluent-py
@@ -312,7 +312,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and rabbit and connected) or (rabbit and connected)"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.rabbit-py
@@ -371,7 +371,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and nats and connected) or (nats and connected)"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.nats-py
@@ -430,7 +430,7 @@ jobs:
           uv pip install --system --group optionals --group testing .
       - name: Test
         run: >
-          pytest -n auto --cov --cov-append
+          pytest -n auto --cov --cov-append --cov-report=
           -vv -m "(slow and redis and connected) or (redis and connected)"
       - name: Rename coverage file
         run: mkdir coverage && mv .coverage coverage/.coverage.redis-py
