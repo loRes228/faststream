@@ -51,13 +51,12 @@ jobs:
       - name: Install Pydantic v2
         if: matrix.pydantic-version == 'pydantic-v2'
         run: uv pip install --system --prerelease=disallow "pydantic>=2.0.0,<3.0.0"
-      - run: mkdir coverage
       - name: Test
         run: >
           pytest -n auto --cov --cov-append
           -vv -m "(slow and not connected) or not connected"
       - name: Rename coverage file
-        run: mv .coverage .coverage.${{ runner.os }}-py${{ matrix.python-version }}-${{ matrix.pydantic-version }}
+        run: mkdir coverage && mv .coverage coverage/.coverage.${{ runner.os }}-py${{ matrix.python-version }}-${{ matrix.pydantic-version }}
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -87,7 +86,7 @@ jobs:
           pytest -n auto --cov --cov-append
           -vv -m "(slow and not connected) or not connected"
       - name: Rename coverage file
-        run: mv .coverage .coverage.macos-latest
+        run: mkdir coverage && mv .coverage coverage/.coverage.macos-latest
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -117,7 +116,7 @@ jobs:
           pytest -n auto --cov --cov-append
           -vv -m "(slow and not connected) or not connected"
       - name: Rename coverage file
-        run: mv .coverage .coverage.windows-latest
+        run: mkdir coverage && mv .coverage coverage/.coverage.windows-latest
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -182,13 +181,12 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           uv pip install --system --group optionals --group testing .
-      - run: mkdir coverage
       - name: Test
         run: >
           pytest -n auto --cov --cov-append
           -vv -m "(slow and kafka and connected) or (kafka and connected)"
       - name: Rename coverage file
-        run: mv .coverage .coverage.kafka-py
+        run: mkdir coverage && mv .coverage coverage/.coverage.kafka-py
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -253,13 +251,12 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           uv pip install --system --group optionals --group testing .
-      - run: mkdir coverage
       - name: Test
         run: >
           pytest -n auto --cov --cov-append
           -vv -m "(slow and confluent and connected) or (confluent and connected)"
       - name: Rename coverage file
-        run: mv .coverage .coverage.confluent-py
+        run: mkdir coverage && mv .coverage coverage/.coverage.confluent-py
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -313,13 +310,12 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           uv pip install --system --group optionals --group testing .
-      - run: mkdir coverage
       - name: Test
         run: >
           pytest -n auto --cov --cov-append
           -vv -m "(slow and rabbit and connected) or (rabbit and connected)"
       - name: Rename coverage file
-        run: mv .coverage .coverage.rabbit-py
+        run: mkdir coverage && mv .coverage coverage/.coverage.rabbit-py
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -373,13 +369,12 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           uv pip install --system --group optionals --group testing .
-      - run: mkdir coverage
       - name: Test
         run: >
           pytest -n auto --cov --cov-append
           -vv -m "(slow and nats and connected) or (nats and connected)"
       - name: Rename coverage file
-        run: mv .coverage .coverage.nats-py
+        run: mkdir coverage && mv .coverage coverage/.coverage.nats-py
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -433,13 +428,12 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           uv pip install --system --group optionals --group testing .
-      - run: mkdir coverage
       - name: Test
         run: >
           pytest -n auto --cov --cov-append
           -vv -m "(slow and redis and connected) or (redis and connected)"
       - name: Rename coverage file
-        run: mv .coverage .coverage.redis-py
+        run: mkdir coverage && mv .coverage coverage/.coverage.redis-py
       - name: Store coverage files
         uses: actions/upload-artifact@v4
         with:
