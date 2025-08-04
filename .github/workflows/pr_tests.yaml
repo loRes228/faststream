@@ -472,7 +472,7 @@ jobs:
           merge-multiple: true
 
       - run: |
-          uv pip install --system coverage[toml]
+          uv pip install --system coverage[toml] covdefaults
 
       - run: ls -la coverage
       - run: coverage combine coverage
